@@ -19,8 +19,8 @@ class ListNode {
 class LinkedList {
 	var head: ListNode?
 	
-	func printList(head:ListNode? = nil) {
-		var cur = head ?? self.head
+	func printList() {
+		var cur = head
 		
 		if cur == nil {
 			print("Empty List\n")
@@ -45,6 +45,22 @@ class LinkedList {
 		temp.next = head
 		head = temp
 	}
+	
+	func insertLast(value:Int){
+		let temp = ListNode(data: value)
+		var cur = head
+		
+		if head == nil {
+			head = temp
+			return
+		}
+		
+		while cur?.next != nil {
+			cur = cur?.next
+		}
+		cur?.next = temp
+		
+	}
 }
 
 
@@ -53,4 +69,5 @@ var list = LinkedList()
 list.insertFirst(value: 10)
 list.insertFirst(value: 20)
 list.insertFirst(value: 30)
+list.insertLast(value: 40)
 list.printList()
